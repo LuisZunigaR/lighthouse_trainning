@@ -17,9 +17,9 @@ jobs:
 
             - uses: actions/setup-node@v3
               with:
-                node-version-file: 'lighthouse_trainning/.nvmrc'
+                node-version-file: '.nvmrc'
                 cache: 'npm'
-                cache-dependency-path: 'lighthouse_trainning/package-lock.json'
+                cache-dependency-path: 'package-lock.json'
 
             - name: Dependencies for Lighthouse
               timeout-minutes: 3
