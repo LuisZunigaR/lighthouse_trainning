@@ -24,7 +24,8 @@ jobs:
             - name: Dependencies for Lighthouse
               timeout-minutes: 3
               run: |
-                npm ci
+                npm i lighthouse
+                npm i lighthouse-batch
 
-            - name: execute py script
+            - name: execute lighthouse cmd
               run: lighthouse-batch -g -f lighthouse/sites.txt
