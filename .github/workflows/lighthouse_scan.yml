@@ -28,6 +28,4 @@ jobs:
 
             - name: execute lighthouse cmd
               run: |
-                lighthouse --version
-                lighthouse-batch --version
-                lighthouse-batch -g -f lighthouse/sites.txt
+                npx lighthouse-batch -g -f lighthouse/sites.txt
