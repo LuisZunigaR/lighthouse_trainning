@@ -24,9 +24,12 @@ jobs:
             - name: Dependencies for Lighthouse
               timeout-minutes: 3
               run: |
-                npm install
+                pwd
+                npm install lighthouse
+                npm install lighthouse
 
             - name: execute lighthouse cmd
               run: |
-                npm exec lighthouse
+                lighthouse --version
+                lighthouse-batch --version
                 lighthouse-batch -g -f lighthouse/sites.txt
