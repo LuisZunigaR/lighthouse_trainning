@@ -1,0 +1,41 @@
+# This workflow use lighthouse to scan selected clients
+
+name: Lighthouse Scanner
+
+on:
+    workflow_dispatch:
+    repository_dispatch:
+    # schedule:
+        # - cron: '0 22,0,2,4 * * *'  # GMT
+
+
+jobs:
+    Scan:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout repo content
+              uses: actions/checkout@v2 # checkout the repository content
+
+            - uses: actions/setup-node@v3
+              with:
+                node-version-file: '.nvmrc'
+                cache: 'npm'
+                cache-dependency-path: 'package-lock.json'
+
+            - name: Dependencies for Lighthouse
+              timeout-minutes: 3
+              run: |
+                npm ci
+        
+            - name: setup python
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.x' # install the python version needed
+
+            - name: install python packages
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+        
+            - name: execute py script
+              run: lighthouse-batch -g -f lighthouse/sites.txt
