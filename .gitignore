@@ -1,0 +1,13 @@
+report/*
+*/workspace/*
+.DS_Store
+.env
+*/.env
+.env
+.venv
+.venv3
+data/
+
+# Dependency directories
+node_modules/
+jspm_packages/
