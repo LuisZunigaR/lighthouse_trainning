@@ -28,4 +28,9 @@ jobs:
 
             - name: execute lighthouse cmd
               run: |
-                npx lighthouse-batch -g -f lighthouse/sites.txt
+                npx lighthouse-batch -g -f lighthouse/sites.txt --html
+
+            - uses: actions/upload-artifact@v4
+              with:
+                name: Lighthouse report
+                path: report/lighthouse/
